@@ -46,6 +46,7 @@ void main(void)
    if (PM == 0){
 
         //BEGIN LED OUTPUT
+		// Temp comparison is done in degrees F
         if (temp<97){
              analogWrite(0,0); // R
              analogWrite(1,0); // G
