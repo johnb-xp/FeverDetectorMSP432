@@ -52,13 +52,13 @@ void main(void)
              analogWrite(2,100); // B  Colder than Body
         }
 
-        if ((temp>97) & (temp<99)){
+        if ((temp>=97) & (temp<99)){
              analogWrite(0,0);
              analogWrite(1,100);
              analogWrite(2,0); // Normal Body Temp
             }
 
-        if (temp>99){
+        if (temp>=99){
              analogWrite(0,100);
              analogWrite(1,0);
              analogWrite(2,0); // Fever
