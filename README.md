@@ -9,3 +9,7 @@ This program is designed specifically for Electrical Engineering students at the
 <br>  Datasheet for the LM 34 IC.
 <br><br><b>TempCheckMSP432</b>
 <br>  Code Composer 9 CCS project for running the program.
+
+
+<br><br>
+Based on Lab 4 from EE 1910
