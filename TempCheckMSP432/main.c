@@ -1,6 +1,7 @@
 #include "msp.h"
 #include "ee1910delay.h" // It uses ee1910delay.h to delay execution of further code
 #include "ee1910analog.h" // The program uses ee1910analog.h for analog to digital conversions - input and output
+#include "ee1910music.h" // sound output
 #include <stdio.h> // Necessary for non-janky printf
 
 #define LB 0x02
@@ -15,6 +16,7 @@ By John Bilkey, modified from Lab 4 from Dr. Ross's EE 1910 Class.
   * MSP 432 Board
   * Breadboard
   * LM 34 Sensor connected to pin 5.5
+  * Speaker connected to pin 6.6 (optional)
  */
 
 void main(void)
@@ -26,9 +28,12 @@ void main(void)
     P2->OUT &= 0b00000000; // Set up LEDs
     analogSetup();
     int PM = 0;   // Selects between printing to console (1) or LED output (0)
+    int stable = 0;
     float temp = 0;
+    float last = 0;
     while(1){
      // PRINT TO CONSOLE *OR* OUTPUT TO LED BASED ON IF STATEMENTS
+    last = temp;
 
     temp = analogRead();  //  float temp is set to analogRead - making sure decimal calculations don't have issues
     temp = ((temp*3.3)/(40.95));  // Convert analogRead output to degrees Fahrenheit
@@ -47,22 +52,37 @@ void main(void)
 
         //BEGIN LED OUTPUT
 		// Temp comparison is done in degrees F
-        if (temp<97){
+        if (temp<97){ //  Colder than body
              analogWrite(0,0); // R
              analogWrite(1,0); // G
-             analogWrite(2,100); // B  Colder than Body
+             analogWrite(2,100); // B
+
+             stable = 0;
         }
 
-        if ((temp>=97) & (temp<99)){
+        if ((temp>=97) & (temp<99)){ // Normal Body Temp
              analogWrite(0,0);
              analogWrite(1,100);
-             analogWrite(2,0); // Normal Body Temp
-            }
+             analogWrite(2,0);
 
-        if (temp>=99){
-             analogWrite(0,100);
+             if ((abs(temp-last) < 0.05) && (stable == 0)){
+                 make_music(200); // play low pitch tone
+                 delay(500);
+                 stop_music();
+                 stable = 1;
+             }
+        }
+
+        if (temp>=99){  // Fever
+             analogWrite(0,100); // Red LED
              analogWrite(1,0);
-             analogWrite(2,0); // Fever
+             analogWrite(2,0);
+                 while(1){
+                 make_music(800); // beep high pitch tone on and off forever
+                 delay(500);
+                 stop_music();
+                 delay(500);
+                 }
         }
     }
 

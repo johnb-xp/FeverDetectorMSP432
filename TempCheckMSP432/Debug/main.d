@@ -19,6 +19,7 @@ main.obj: C:/ti/ccs920/ccs/ccs_base/arm/include/CMSIS/cmsis_ccs.h
 main.obj: C:/ti/ccs920/ccs/ccs_base/arm/include/system_msp432p401r.h
 main.obj: ../ee1910delay.h
 main.obj: ../ee1910analog.h
+main.obj: ../ee1910music.h
 main.obj: C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdio.h
 main.obj: C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/_ti_config.h
 main.obj: C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/linkage.h
@@ -43,6 +44,7 @@ C:/ti/ccs920/ccs/ccs_base/arm/include/CMSIS/cmsis_ccs.h:
 C:/ti/ccs920/ccs/ccs_base/arm/include/system_msp432p401r.h: 
 ../ee1910delay.h: 
 ../ee1910analog.h: 
+../ee1910music.h: 
 C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdio.h: 
 C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/_ti_config.h: 
 C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/linkage.h: 

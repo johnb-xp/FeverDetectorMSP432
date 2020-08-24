@@ -122,34 +122,34 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-TempCheck.out \
+TempCheckSound.out \
 
 EXE_OUTPUTS__QUOTED += \
-"TempCheck.out" \
+"TempCheckSound.out" \
 
 BIN_OUTPUTS += \
-TempCheck.hex \
+TempCheckSound.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"TempCheck.hex" \
+"TempCheckSound.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "TempCheck.out"
+	@$(MAKE) --no-print-directory -Onone "TempCheckSound.out"
 
 # Tool invocations
-TempCheck.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+TempCheckSound.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=all --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"TempCheck.map" --heap_size=1024 --stack_size=512 -i"C:/ti/ccs920/ccs/ccs_base/arm/include" -i"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/lib" -i"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="TempCheck_linkInfo.xml" --rom_model -o "TempCheck.out" $(ORDERED_OBJS)
+	"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=all --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"TempCheckSound.map" --heap_size=1024 --stack_size=512 -i"C:/ti/ccs920/ccs/ccs_base/arm/include" -i"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/lib" -i"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="TempCheckSound_linkInfo.xml" --rom_model -o "TempCheckSound.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-TempCheck.hex: $(EXE_OUTPUTS)
+TempCheckSound.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: ARM Hex Utility'
-	"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/bin/armhex" --memwidth=8 --romwidth=8 -o "TempCheck.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/bin/armhex" --memwidth=8 --romwidth=8 -o "TempCheckSound.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
