@@ -65,6 +65,7 @@ void main(void)
              analogWrite(1,100);
              analogWrite(2,0);
 
+             delay(500);
              if ((abs(temp-last) < 0.05) && (stable == 0)){
                  make_music(200); // play low pitch tone
                  delay(500);
